@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Posts Detail</title>
+</head>
+<body>
+<form method="POST" action="">
+ <p>
+  <label>title:
+    <input type="text" name="title" value="{{posts.title}}">
+  </label>
+  <label>content:
+    <input type="text" name="content" value="{{posts.content}}">
+  </label>
+  </p>
+  <p>
+  <label>created:{{posts.created_at}}</label>
+  <label>  last update:{{posts.updated_at}}</label>
+  </p>
+  <p>
+  	<label>Tags:{% for tags in added_tags %}
+  					{{tags.name}}
+  				{% endfor %}
+  	</label>
+  </p>
+  <p>
+  <label>Add Tags</label>
+   <select name="tags">
+    {% for tag in tags %}
+        {% ifequal tag.id selected_tag.id %}
+            <option value="{{tag.id}}" selected="selected">{{tag.name}}</option>
+        {% else %}
+            <option value="{{tag.id}}">{{tag.name}} </option>
+        {% endifequal %}
+    {% endfor %}
+</select>
+</p>
+  <input type="submit" value="Update">
+</form> 
+</body>
+</html>
